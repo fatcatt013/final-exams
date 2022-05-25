@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3 - retezce</title>
+</head>
+
+<body>
+<form action="">
+    <input type="text" placeholder="Email" id="email">
+    <input type="text" placeholder="Trida" id="trida">
+    <button id="mybtn">Potvrdit</button>
+</form>
+</body>
+<script>
+    //+ je tam nekolikrat
+
+    let regexEmail = ["[a-z.]+@[a-z]+(.com){1}", "[a-z.]+@[a-z]+(.cz){1}", "[a-z.]+@[a-z]+(.edu){1}"];
+    let regexTrida = ["[A-Z]{1}[1-4]{1}[A-D]{1}"];
+
+    const submit = () => {
+        let email = document.getElementById("email");
+        let trida = document.getElementById("trida");
+        let passed = [false, false];
+
+        for (let i = 0; i < regexEmail.length; i++){
+            if (email.value.match(regexEmail[i])){
+                passed[0] = true;
+            }
+        }
+        for (let i = 0; i < regexTrida.length; i++){
+            if (trida.value.match(regexTrida[i])){
+                passed[1] = true;
+            }
+        }
+        if (passed[0] === true && passed[1] === true){
+            alert("Obe dve hodnoty jsou spravne");
+        } else {
+            alert("Nespravne zadane hodnoty");
+        }
+    }
+
+    document.getElementById("mybtn").addEventListener("click", submit);
+
+
+</script>
+</html>
