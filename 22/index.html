@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Otazka 22</title>
+</head>
+<body>
+    <form action="">
+        <p>Zadejte text</p>
+        <input type="text" id="input">
+        <input type="submit">
+    </form>
+    <p id="output"></p>
+</body>
+<script>
+
+    const form = document.querySelector('form');
+    form.addEventListener('submit', event => {
+        event.preventDefault();
+        const output = document.getElementById("output");
+        const input = document.getElementById("input");
+
+        let arr = input.value.split("");
+        arr.reverse();
+        output.innerText = arr.join("");
+    });
+
+</script>
+</html>
