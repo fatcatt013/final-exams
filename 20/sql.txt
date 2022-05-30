@@ -1,0 +1,5 @@
+Vytvořte pohled: jméno studenta, datum zkoušky, počet bodů, které získal na zkoušce pro případy, kdy student získal více jak 50 bodů.
+
+CREATE VIEW newView AS
+SELECT name, date, score
+WHERE score > 50;
