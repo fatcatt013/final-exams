@@ -1,0 +1,35 @@
+Nezkousel jsem to, pouze psal do textovyho souboru.. nezarucuji, ze to je spravne!!!!
+
+
+
+• prezidenti, kteří mají ve jméně w nebo v
+
+SELECT * FROM president WHERE first_name LIKE "%v%" OR first_name LIKE "%w%"
+
+• posledních 20 prezidentů podle abecedy, seřazeni podle příjmení a pak
+podle křestního jména
+
+SELECT * FROM president
+ORDER BY last_name, first_name (DESC)
+LIMIT 20
+
+• měsíc, počet prezidentů, kteří se v daném měsíci narodili
+
+SELECT MONTH(birthDate) AS month, COUNT(month)
+FROM president
+GROUP BY month;
+
+• jako předchozí, ale jen měsíce s více jak 3 narozenými prezidenty
+
+SELECT MONTH(birthDate) AS month, COUNT(month) AS pocet_prezidentu
+FROM president
+WHERE pocet_prezidentu > 3
+GROUP BY month;
+
+• na tabulce student: id studenta, id zkoušky, score na zkoušce, ale jen pro
+score, které je nadprůměrné (větší než celkový průměr bodů na všech zkouškách) = vnořený dotaz
+
+SELECT id_studenta, id_zkousky, score
+FROM grade_event
+WHERE score > AVG(score)
+
