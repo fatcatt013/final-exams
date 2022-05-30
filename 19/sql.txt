@@ -1,0 +1,23 @@
+jméno, pohlaví a score všech studentů, kteří dostali na některé zkoušce aspoň 90 bodů
+SELECT student.name, student.sex, grade_event.score
+FROM student
+JOIN grade_event ON student.id = grade_event.student_id
+WHERE (grade_event.score > 89)
+
+datum zkoušky, počet studentů na zkoušce, průměrný počet bodů na zkoušce
+SELECT grade_event.date, COUNT(grade_event.event_id) zkouska, AVG(grade_event.score)
+FROM grade_event
+GROUP BY zkouska
+
+
+jméno studenta, datum zkoušky, počet bodů, které získal na zkoušce, i pro zkoušku, na které nebyl žádný student
+SELECT student.name, grade_event.date, grade_event.score
+FROM grade_event
+LEFT JOIN student ON student.id = grade_event.student_id
+
+
+jméno studenta, pohlaví, datum zkoušky, typ zkoušky, počet bodů, jen pro zkoušky, které byly T (testy)
+SELECT student.name, student.sex, grade_event.date, grade_event.type, grade_event.score
+FROM student
+JOIN grade_event ON student.id = grade_event.student_id
+WHERE grade_event.type = "T"
